@@ -1,170 +1,189 @@
-# ELIXIR
+# ANOTAÇÕES DE ESTUDO SOBRE ELIXIR
 
-## CONCEITO DA LINGUAGEM
-
-REVER
-
-## COMANDOS IMPORTANTES
-
-No terminal do elixir, pode usar comandos como:
-
-Map. (TAB)
-List. (TAB)
-
-O que isso faz ? Lista uma documentação para nós, das funções de Map padrões da linguagem e o mesmo para List e
-para todas as outras funções da linguagem como String, Float, Integer, Atom, etc.
-
-## TIPOS PRIMITIVOS (BOOLEAN | STRING | FLOAT | INTEGER)
+## **CONCEITO DA LINGUAGEM**
 
 REVER
 
-## LISTAS
+&nbsp;
 
-As listas no Elixir possuem um sintaxe idêntica a arrays de outras linguagens como PHP e JavaScript;
+## **COMANDOS IMPORTANTES**
 
-Array (PHP/JavaScript) = [] | Lista (Elixir) = []
+No terminal do elixir, pode usar comandos como: **Map. (TAB)**
 
-Porém, diferentemente das outras linguagens, o Elixir trabalha com essa sintaxe como sendo Listas Encadeadas, e por que isso ?
+O que isso faz ?
+> Lista uma documentação para nós, das funções de Map padrões da linguagem e o mesmo para >List e para todas as outras funções da linguagem como String, Float, Integer, Atom, etc.
 
-Bom, listas encadeadas não permitem um acesso direto a determinado valor nela armazenado (memória) e caso nós precisemos acessar
-o segundo valor dessa lista, obrigatoriamente precisamos passar pelo primeiro pois existe a seguinte ordem de execução:
+&nbsp;
 
-[1] -> [2] -> [3]
+## **TIPOS PRIMITIVOS (BOOLEAN | STRING | FLOAT | INTEGER)**
 
-Ou seja, o primeiro valor encadeia o segundo que encadeia o terceiro, obrigatoriamente precisando ter a leitura completa da lista por um
-exemplo para acessar o valor [3];
+REVER
 
-### AÇÕES POSSÍVEIS NA LISTA
+&nbsp;
 
-- Variada:
+## **LISTAS**
+
+Diferentemente das outras linguagens, no **Elixir** as listas trabalham com ***encadeamento***, e por que isso ?
+
+Bom, listas encadeadas não permitem um acesso direto aos valores armazenados na memória. E caso seja necessário acessar o segundo valor dessa lista, é obrigatório passar pelo primeiro índice da lista pois existe a seguinte ordem de execução:
 
 ```elixir
+[1] -> [2] -> [3]
+```
+
+Ou seja, o primeiro índice é o responsável por encadear os demais e gerar a possibilidade de os acessar. Sem passar pelo primeiro não temos como validar o valor do segundo/terceiro índice e assim por diante.
+
+&nbsp;
+
+Uma lista pode conter valores:
+
+1. Variados:
+
+    ```elixir
     Input: [1, 2 , 3.5, "string"]
     Output: [1, 2, 3.5, "string"]
-```
+    ```
 
-- Somada/Concatenada:
+2. Somado/Concatenado:
 
-```elixir
+    ```elixir
     Input: [1, 2, 3] ++ [4 ,5, 6]
     Output: [1, 2, 3, 4, 5, 6]
-```
+    ```
 
-- Substraída:
+3. Substraída:
 
-```elixir
+    ```elixir
     Input: [1, 2, 3] -- [2]
     Output: [1, 3]
-```
+    ```
 
-- Acesso de elementos:
+&nbsp;
 
-```elixir
-    hd (retorna a cabeça, ou seja, o primeiro elemento da lista):
-        Input: hd([1, 2, 3])
-        Output: 1
-
-    tl (retorna a cauda, ou seja, todos os elementos da lista menos o primeiro):
-        Input: tl([1, 2, 3])
-        Output: [2, 3]
-```
-
-### IMUTABILIDADE EM LISTAS
-
-A seguinte operação:
+E como seria um exemplo de acesso/verificação dos elementos de uma lista?
 
 ```elixir
-    x = [1, 2, 3]
-    x = [1, 2, 3] ++ [4]
+hd (retorna a cabeça, ou seja, o primeiro elemento da lista):
+    Input: hd([1, 2, 3])
+    Output: 1
+
+tl (retorna a cauda, ou seja, todos os elementos da lista menos o primeiro):
+    Input: tl([1, 2, 3])
+    Output: [2, 3]
 ```
 
-O que acontece aqui ?
+&nbsp;
 
-Nós estamos fazendo uma concatenação/soma da lista [1, 2, 3] e [4], porém, o processo final não irá fazer com que o valor original
-de X ou até mesmo da lista [4]. Eles permanecem em memória salvos e o novo valor de Output: [1, 2, 3, 4].
+### *IMUTABILIDADE EM LISTAS*
 
-Agora o que aconteceu com o novo valor de X ? Ele vai criar outro valor em memória ?
+Como funciona a imutabilidade do **Elixir** nas listas ?  
 
-R: Não, ele irá fazer um apontamento para o local de memória de X e de Y e então com o mapeamento da memória somar os concatenar/somar. Então
-ele não cria outro espaço em memória para uso mas faz o consumo dos já existentes como se fosse um referência das ações que ocorreram.
-Fazendo um trabalho de memória mais inteligente e eficiente.
+&nbsp;
 
-## TUPLAS
+Para poder responder a pergunta de forma mais didática, vamos levar em consideração o código abaixo:
+
+```elixir
+x = [1, 2, 3]
+x = [1, 2, 3] ++ [4]
+```
+
+O que acontece aqui neste código?  
+Nós estamos fazendo uma concatenação/soma da lista ```[1, 2, 3]``` e ```[4]```. O que vai acontecer nesse caso ? Em memória, nós teremos 2 listas criadas, a lista de X e ```[4]```, eles não sofrerão alteração, o que vai acontecer é:
+> Um apontamento para o local de memória de X e de ```[4]``` e então com a leitura da memória realizada, somar/concatenar os valores. Não criando outro espaço em memória para uso, mas fazendo o consumo dos dados já existentes como uma referência em memória, sendo um trabalho de memória mais performático.
+
+&nbsp;
+
+## **TUPLAS**
 
 A sintaxe das tuplas é parecida com a de objetos JavaScript tendo o seu início e fechamento identificado pelo colchetes {}.
 
-### DIFERENÇA ENTRE TUPLA E LISTA
+&nbsp;
 
-A tupla é armazenada contiguamente na memória, ou seja endereços um após o outro seguintes, o que significa que nesse caso temos
+### *DIFERENÇA ENTRE TUPLA E LISTA*
+
+A tupla é armazenada contiguamente na memória, ou seja endereços um após o outro, o que significa que nesse caso temos
 acesso direto aos elementos.
 
-Exemplo:
-
 ```elixir
-    x = {1, 2, 3, 4, 5, 6, 7, 8}
+É possível acessar diretamente o valor da seguinte forma :
+    Input: 
+        x = {1, 2, 3, 4, 5, 6, 7, 8}
+        elem(x, 4)    
     
-    Input: elem(x, 4)
     Output: 5 
 
-    Input_2: put_elem(x, 4, "abacate")
+É possível também alterar o valor de um índice específico da tupla :
+    Input:
+        x = {1, 2, 3, 4, 5, 6, 7, 8}
+        put_elem(x, 4, "abacate")
+    
     Output: {1, 2, 3, 4, "abacate", 6, 7, 8}
 ```
 
-Como os endereços são contiguos em memória, o tamanho da tupla não é dinâmico então não é possível simplesmente
-ir acrescentando novos valores, então caso eu faço *put_elem(x, 8, "abacate")* um erro me será gerado pois esse índice não existe nessa tupla;
-
-Sempre que eu precisar acrescentar valores a uma tupla, deve-se criar uma nova tupla;
-
-### IMUTABILIDADE EM TUPLAS
-
-A lista como vimos no exemplo acima ela sempre vai apontar para o local de memória dos valores originais para poder formar o valor esperado, não criando
-novos valores em memória.
-
-Agora a tupla, sempre que nós fazemos uma modificação nela, nós estamos criando uma outra tupla em memória com os valores novos. Então por um exemplo:
+Como os endereços são contiguos, o tamanho da tupla não é dinâmico. Portanto, não podemos simplesmente ir acrescentando novos valores, então no exemplo:  
 
 ```elixir
-x = {1, 2, 3} -> Tenho uma tupla em memória
-put_elem(x, 1, "abacate") -> Ele vai criar mais uma tupla em memória com o valor {1, "abacate", 3};
-```
+x = {1, 2, 3}
+put_elem(x, 8, "abacate")
+```  
 
-Agora teremos em memória 2 locais endereçados de tuplas, sendo elas : *{1, 2, 3} e {1, "abacate", 3}*
+Um erro será gerado pois esse índice não existe nessa tupla. 
+> Sempre que for necessário acrescentar valores a uma tupla, deve-se criar uma nova.
 
-### CONTEXTO PARA USO DE TUPLAS
+&nbsp;
 
-Normalmente elas são usadas para efetuar um agrupamento de dados que fazem sentido entre si e que normalmente, não vão ter trabalho em cima deles para modificações extensas
-ou trabalho de recursividade/iteração;
+### *IMUTABILIDADE EM TUPLAS*
 
-Exemplo de uso das tuplas (realizado pelo Elixir):
+A lista como exemplificado acima ela sempre vai apontar para o local de memória dos valores originais e então gerar o valor esperado, não criando novos valores em memória.
 
-Vamos imaginar que temos um arquivo *tuplas.txt* esse arquivo possui um conteúdo *texto de teste muito testador*.
-Agora imaginemos que precisamos recuperar o conteúdo desse arquivo, podemos usar a seguinte linha de código:
+Ja a tupla trabalha de outra forma, sempre que é realizada uma modificação, é criada uma nova tupla em memória com os valores modificados. Então por um exemplo:
 
 ```elixir
-    Input: File.read("tuplas.txt")
-    Output: {:ok, "texto de teste muito testador"}
+x = {1, 2, 3}
+put_elem(x, 1, "abacate")
 ```
 
-É possível identificar que ele nos retorna uma tupla com agrupamento de dados que fazem sentido entre si, tem um ATOM :ok, indicando que a recuperação foi um sucesso
-e o conteúdo desse arquivo txt
+Agora existe em memória 2 locais endereçados de tuplas, sendo elas : ```{1, 2, 3}``` e ```{1, "abacate", 3}```
 
-## TUPLAS VS. LISTAS PARA RETORNOS
+&nbsp;
 
-Tuplas: Normalmente as utilizaremos para retorno de funções, onde normalmente vamos retornar em primeiro indice um atom indicando sucesso ou não da função e nos demais
-parâmetros os valores trabalhados e/ou retornados da função.
+### *CONTEXTO PARA USO DE TUPLAS*
 
-Listas: Normalmente iremos as utilizar para trabalhar uma grande quantidade informação de forma encadeada e com apontamento para locais de memória já estabelecidos, então
-podemos as usar por um exemplo em retornos de API's.
+Normalmente elas são usadas para efetuar um agrupamento de dados que fazem sentido entre si e que normalmente, não vão ter processamentos em cima para modificações extensas ou processo de recursividade/iteração;
 
-## MAPS
+&nbsp;
 
-Maps são estruturas de dados usadas para termos acesso aos valores de uma tupla pelo modelo *chave => valor (acesso direto)*.
+Exemplo de uso das tuplas:
+
+Vamos imaginar que temos um arquivo **tuplas.txt** esse arquivo possui como conteúdo **texto de teste muito testador**.
+Agora precisamos recuperar o conteúdo desse arquivo:
+
+```elixir
+Input: File.read("tuplas.txt")
+Output: {:ok, "texto de teste muito testador"}
+```
+
+É possível verificar que ele nos retorna uma tupla com agrupamento de dados que fazem sentido entre si, tendo um *atom* ``:ok``, indicando que a recuperação foi um sucesso
+e o conteúdo desse arquivo txt.
+
+&nbsp;
+
+## **TUPLAS VS. LISTAS PARA RETORNOS**
+
+*Tuplas*: Normalmente as utilizadas para retorno de funções, onde é retornado em no 1º indice um *atom* indicando ``:error`` ou ``:ok`` (valores ilustrativos, não sendo regra absoluta) e nos demais parâmetros os valores trabalhados e/ou retornados da função.
+
+*Listas*: Normalmente utilizadas para processar uma grande quantidade informação de forma encadeada e com apontamento para locais de memória já estabelecidos, podendo ser modificadas sem causar um alto consumo de memória.
+
+&nbsp;
+
+## **MAPS**
+
+Maps são estruturas de dados usadas para acesso aos valores de uma tupla pelo modelo *chave => valor (acesso direto)*.
 
 Sintaxe do map:
 
 ```elixir
 %{a: 1, b: 2, c: 3} : os ATOM no map são usados como chave dos valores.
-
-ou
 
 %{"a" => 1, "b" => 2, "c" => 3} : simulando a sintaxe existente no PHP para arrays.
 ```
@@ -191,9 +210,11 @@ Output String:
     2
 ```
 
-Não é possível no map de string fazer o acesso direto pela notação *ponto*, diferentemente do map de atom.
+> Não é possível no map de string fazer o acesso direto pela notação *ponto*, diferentemente do map de atom.
 
-Uma forma de adicionarmos valores ao map antes inexistentes é com utilizando o Map.put exemplo abaixo:
+&nbsp;
+
+Uma forma de se adicionar novos valores ao map antes é utilizando o **Map.put**:
 
 ```elixir
 Input: 
@@ -203,7 +224,7 @@ Output:
     %{a: 1, b: 2, c: 3}
 ```
 
-No MAP temos algumas formas de fazer uma alteração dos valores existentes nele como demonstrado abaixo:
+No **Map** existem formas de alterar os valores existentes como demonstrado abaixo:
 
 ```elixir
 1ª forma
@@ -220,12 +241,14 @@ No MAP temos algumas formas de fazer uma alteração dos valores existentes nele
         %{a: 1, b: 2.2, c: 3}
 ```
 
+&nbsp;
+
 É possível existir listas e maps junto ?
 
-R: Sim, é perfeitamente possível e comum, principalmente quando trabalhos com JSON usado em requisições web e em comunicações com API's
+Sim, é perfeitamente possível e comum, principalmente com JSON (JavaScript Object Notation) usado em requisições web e retornos de API's
 Onde nós teremos uma lista de maps.
 
-Exemplo de como pode ser uma lista de maps:
+Exemplo de uma lista de maps:
 
 ```elixir
 [
@@ -234,7 +257,9 @@ Exemplo de como pode ser uma lista de maps:
 ]
 ```
 
-## PATTERN MATCHING
+&nbsp;
+
+## **PATTERN MATCHING (EM PROGRESSO)**
 
 O que é ?
     Match é o esquema de atribuição de valores as variáveis trabalhado pelo Elixir. Diferente de uma PHP ou JavaScript da vida,
