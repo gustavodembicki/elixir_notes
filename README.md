@@ -1,8 +1,20 @@
 # ANOTAÇÕES DE ESTUDO SOBRE ELIXIR
 
-## **CONCEITO DA LINGUAGEM**
+## **CONCEITOS E VANTAGENS DA LINGUAGEM**
 
-REVER
+Elixir por ser uma linguagem funcional, ela tem como principal filosofia por assim dizer, a capacidade de solucionar problemas como:  
+
+1. Imutabilidade  
+    1.1 Redução de efeitos colaterais;
+    1.2 Trabalha muito bem com uma grande concorrência e paralelismo de funcionamento;
+
+2. Testes e codebase da linguagem são simples e altamente escaláveis;
+
+3. Elixir trabalha com Erlang VM (BEAM)
+    3.1 Possui alta disponibilidade e escalabilidade;
+    3.2 Em 2018 rodava 90% de todo o tráfego da internet. Demonstrando o poder da linguagem para trabalho em concorrência e paralelimos;
+
+4. Maior aproveitamento do poder computacional disponível;
 
 &nbsp;
 
@@ -17,7 +29,7 @@ O que isso faz ?
 
 ## **TIPOS PRIMITIVOS (BOOLEAN | STRING | FLOAT | INTEGER)**
 
-REVER
+O trabalho do Elixir em cima de tipos primitivos como Boolean, String, Float, Integer segue o padrão já estabelecida em outras linguagens de programação como PHP e JavaScript por um exemplo.
 
 &nbsp;
 
