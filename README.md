@@ -88,8 +88,8 @@ x = [1, 2, 3] ++ [4]
 ```
 
 O que acontece aqui neste código?  
-Nós estamos fazendo uma concatenação/soma da lista ```[1, 2, 3]``` e ```[4]```. O que vai acontecer nesse caso ? Em memória, nós teremos 2 listas criadas, a lista de X e ```[4]```, eles não sofrerão alteração, o que vai acontecer é:
-> Um apontamento para o local de memória de X e de ```[4]``` e então com a leitura da memória realizada, somar/concatenar os valores. Não criando outro espaço em memória para uso, mas fazendo o consumo dos dados já existentes como uma referência em memória, sendo um trabalho de memória mais performático.
+Nós estamos fazendo uma concatenação/soma da lista ``[1, 2, 3]`` e ``[4]``. O que vai acontecer nesse caso ? Em memória, nós teremos 2 listas criadas, a lista de X e ``[4]``, eles não sofrerão alteração, o que vai acontecer é:
+> Um apontamento para o local de memória de X e de ``[4]`` e então com a leitura da memória realizada, somar/concatenar os valores. Não criando outro espaço em memória para uso, mas fazendo o consumo dos dados já existentes como uma referência em memória, sendo um trabalho de memória mais performático.
 
 &nbsp;
 
@@ -127,7 +127,7 @@ x = {1, 2, 3}
 put_elem(x, 8, "abacate")
 ```  
 
-Um erro será gerado pois esse índice não existe nessa tupla. 
+Um erro será gerado pois esse índice não existe nessa tupla.
 > Sempre que for necessário acrescentar valores a uma tupla, deve-se criar uma nova.
 
 &nbsp;
@@ -143,7 +143,7 @@ x = {1, 2, 3}
 put_elem(x, 1, "abacate")
 ```
 
-Agora existe em memória 2 locais endereçados de tuplas, sendo elas : ```{1, 2, 3}``` e ```{1, "abacate", 3}```
+Agora existe em memória 2 locais endereçados de tuplas, sendo elas : ``{1, 2, 3}`` e ``{1, "abacate", 3}``
 
 &nbsp;
 
