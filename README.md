@@ -22,8 +22,7 @@ REVER
 
 As listas no Elixir possuem um sintaxe idêntica a arrays de outras linguagens como PHP e JavaScript;
 
-Array (PHP/JavaScript) = []
-Lista (Elixir) = []
+Array (PHP/JavaScript) = [] | Lista (Elixir) = []
 
 Porém, diferentemente das outras linguagens, o Elixir trabalha com essa sintaxe como sendo Listas Encadeadas, e por que isso ?
 
@@ -194,7 +193,7 @@ Output String:
 
 Não é possível no map de string fazer o acesso direto pela notação *ponto*, diferentemente do map de atom.
 
-Uma forma de adicionarmos valores ao map antes inexistentes é com uilizando o Map.putm exemplo abaixo:
+Uma forma de adicionarmos valores ao map antes inexistentes é com utilizando o Map.put exemplo abaixo:
 
 ```elixir
 Input: 
